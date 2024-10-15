@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mirror_wall/provider/search_engine_provider.dart';
-import 'package:mirror_wall/view/search_engine/search_engine_home_screen.dart';
+import 'package:mirror_wall/view/search_engine/search_engine_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SearchEngineHomeScreen(),
+      home: SearchEngineScreen(),
     );
   }
 }

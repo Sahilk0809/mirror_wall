@@ -5,40 +5,25 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../modal/search_engine_modal.dart';
 
 class SearchEngineProvider with ChangeNotifier {
-  List<String> history = [];
+  List<String> history = []; // to store history
+  // webView Controller to controller on the web
   InAppWebViewController? webViewController;
+
+  // to store the can user go back/forward
   bool canGoBack = false;
   bool canGoForward = false;
+
+  // search controller
   var txtSearch = TextEditingController();
+
+  // is the url is loading or not
   bool isLoading = false;
 
-  void setLoader(bool value){
+  // setting the url is loaded or not
+  void setLoader(bool value) {
     isLoading = value;
     notifyListeners();
   }
-
-  // List searchEngineList = [
-  //   {
-  //     'main': "https://www.google.com",
-  //     'url': "https://www.google.com/search?q=flutter",
-  //   },
-  //   {
-  //     'main': "https://in.search.yahoo.com",
-  //     'url': "https://in.search.yahoo.com/search?q=flutter",
-  //   },
-  //   {
-  //     'main': "https://duckduckgo.com/",
-  //     'url': "https://duckduckgo.com/?t=h_&q=flutter&ia=web",
-  //   },
-  //   {
-  //     'main': "https://yandex.com/?",
-  //     'url': "https://yandex.com/search/?text=flutter&lr=10555",
-  //   },
-  //   {
-  //     'main': "https://www.bing.com/",
-  //     'url': "https://www.bing.com/search?q=flutter",
-  //   },
-  // ];
 
 // https://in.search.yahoo.com/search?q=flutter
 // https://duckduckgo.com/?t=h_&q=flutter&ia=web
@@ -78,6 +63,7 @@ class SearchEngineProvider with ChangeNotifier {
     },
   ];
 
+  // making list of object for code simplicity
   List<SearchEngineModal> searchEngineList = [];
 
   void makeListOfObject() {
@@ -113,6 +99,7 @@ class SearchEngineProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  // deleting history
   Future<void> deleteHistory(int index) async {
     history.removeAt(index);
     final sharedPreferences = await SharedPreferences.getInstance();
@@ -140,8 +127,6 @@ class SearchEngineProvider with ChangeNotifier {
   // Navigate back
   Future<void> goBack() async {
     if (canGoBack) {
-      WebUri? webUri = await webViewController!.getUrl();
-      txtSearch.text = webUri!.origin;
       await webViewController?.goBack();
       await updateNavigationButtons();
     }
@@ -150,8 +135,6 @@ class SearchEngineProvider with ChangeNotifier {
   // Navigate forward
   Future<void> goForward() async {
     if (canGoForward) {
-      WebUri? webUri = await webViewController!.getUrl();
-      txtSearch.text = webUri!.origin;
       await webViewController?.goForward();
       await updateNavigationButtons();
     }

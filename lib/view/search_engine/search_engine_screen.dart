@@ -24,12 +24,51 @@ class _SearchEngineScreenState extends State<SearchEngineScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: GestureDetector(
-            onTap: () {
-              providerTrue.txtSearch.clear();
-              Navigator.pop(context);
-            },
-            child: const Icon(Icons.home_outlined)),
+          onTap: () {
+            providerTrue.txtSearch.clear();
+            providerTrue.webViewController!.loadUrl(
+              urlRequest: URLRequest(
+                url: WebUri(providerTrue.selectedEngineUrl),
+              ),
+            );
+          },
+          child: const Icon(Icons.home_outlined),
+        ),
         title: const Text('Search Engine'),
+        actions: [
+          PopupMenuButton<Map<String, String>>(
+            color: Colors.white,
+            onSelected: (Map<String, String> engine) {
+              providerTrue.setSearchEngine(
+                  engine['url']!); // Update the search engine URL
+              providerTrue.webViewController!.loadUrl(
+                urlRequest: URLRequest(
+                  url: WebUri(engine['url']!),
+                ),
+              );
+            },
+            itemBuilder: (BuildContext context) {
+              return providerTrue.searchEngines.map((engine) {
+                return PopupMenuItem<Map<String, String>>(
+                  value: engine,
+                  child: Row(
+                    children: [
+                      Image.network(
+                        engine['logo']!,
+                        width: 20,
+                        height: 20,
+                        fit: BoxFit.cover,
+                      ),
+                      const SizedBox(width: 8),
+                      Text(engine['name']!),
+                    ],
+                  ),
+                );
+              }).toList();
+            },
+            icon: const Icon(Icons.more_vert), // Icon for the button
+          ),
+        ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(50),
           child: Container(
@@ -89,11 +128,11 @@ class _SearchEngineScreenState extends State<SearchEngineScreen> {
                 onLoadStop: (controller, url) async {
                   if (url != null) {
                     value.setLoader(false);
-                    value.addToHistory(url.toString());
                     await value.updateNavigationButtons();
                   }
                 },
                 onLoadStart: (controller, url) {
+                  value.addToHistory(url.toString());
                   providerFalse.setLoader(true);
                 },
               );
