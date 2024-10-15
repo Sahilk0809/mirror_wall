@@ -1,16 +1,11 @@
 # mirror_wall
 
-A new Flutter project.
+## Search Engine
 
-## Getting Started
+## Description
+### Flutter Search Engine 🔍
+A powerful and lightweight search engine app built with Flutter. It allows users to search and retrieve results efficiently with a smooth and responsive UI. Designed with simplicity in mind, the app offers features like search suggestions, real-time filtering, and intuitive navigation. Ideal for learning or demonstrating Flutter’s capabilities in building fast and interactive search experiences across platforms.
 
-This project is a starting point for a Flutter application.
+<img src="https://github.com/user-attachments/assets/35077547-8ccd-416a-9cdb-ce3191e6b564" height=65% width=22%>
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://github.com/user-attachments/assets/c0130002-fa64-403b-aa22-112403a20dae
