@@ -21,6 +21,6 @@ A simple and efficient search engine app with the following features:
 <img src="https://github.com/user-attachments/assets/fc8ab5fb-25a1-43d3-9a96-d166ec18aa5c" height=65% width=22%>
 <img src="https://github.com/user-attachments/assets/945b67e1-5dc8-4974-b580-33cd1e1cd0e1" height=65% width=22%>
 
-https://github.com/user-attachments/assets/c0130002-fa64-403b-aa22-112403a20dae
+<!--https://github.com/user-attachments/assets/c0130002-fa64-403b-aa22-112403a20dae-->
 
 https://github.com/user-attachments/assets/8fcc87eb-34b8-4348-914f-06b0f5eeebee
